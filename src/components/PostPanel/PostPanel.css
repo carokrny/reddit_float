@@ -1,0 +1,15 @@
+.postPanel {
+    /* change to flex column when buttons are added */
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 50px);
+}
+
+.postContainer {
+    width: 60%;
+    height: 60%;
+    background-color: rgb(240, 240, 240);
+    box-shadow: 20px 10px 10px rgb(185, 185, 185);
+    padding: 16px;
+}
