@@ -1,4 +1,6 @@
 import Post from '../Post/Post';
+import PrevButton from '../Buttons/PrevButton';
+import NextButton from '../Buttons/NextButton';
 import './PostPanel.css';
 
 function PostPanel() {
@@ -7,6 +9,10 @@ function PostPanel() {
         <div className="postPanel">
             <div className="postContainer">
                 <Post />
+            </div>
+            <div className="buttonsContainer">
+                <PrevButton />
+                <NextButton />
             </div>
         </div>
     );
