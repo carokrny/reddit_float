@@ -1,0 +1,16 @@
+.vote h4, h5 {
+    text-emphasis: none;
+    font-weight: 400;
+    font-family: sans-serif;
+    font-stretch: normal;
+}
+
+.vote h5 {
+    font-size: 1.5rem;
+    padding: 0 0.5rem;
+}
+
+.vote h5 {
+    line-height: 2rem;
+    font-size: 1rem;
+}

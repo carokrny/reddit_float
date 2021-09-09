@@ -6,9 +6,10 @@ export const fetchSubreddit = createAsyncThunk(
         const url = `https://www.reddit.com${subreddit}.json`;
         try {
             const response = await fetch(url);
-            const data = await response.json();
-            console.log(data);
-            return data.data.children;
+            const json = await response.json();
+            const posts = json.data.children;
+            console.log(posts);
+            return posts;
         } catch(e) {
             console.error(e);
         }
@@ -18,7 +19,7 @@ export const fetchSubreddit = createAsyncThunk(
 const subredditSlice = createSlice({
     name: 'subreddit', 
     initialState: {
-        subreddit: null,
+        posts: null,
         isLoading: false,
         postIndex: null,
         atIndexMax: true,
@@ -27,9 +28,11 @@ const subredditSlice = createSlice({
         updatePostIndex: (state, action) => {
             if(!state.atIndexMax || action.payload < 0) {
                 state.postIndex += action.payload;
-                if (state.postIndex >= state.subreddit.length) {
+                if (state.postIndex >= state.posts.length-1) {
                     state.atIndexMax = true;
-                } 
+                } else if (state.atIndexMax) {
+                    state.atIndexMax = false;
+                }
             }
         },
     },
@@ -39,31 +42,31 @@ const subredditSlice = createSlice({
         },
         [fetchSubreddit.fulfilled]: (state, action) => {
             state.isLoading = false;
-            state.subreddit = action.payload;
+            state.posts = action.payload;
             state.postIndex = 0;
-            if (state.subreddit.length) {
+            if (state.posts.length) {
                 state.atIndexMax = false;
             }
         },
         [fetchSubreddit.rejected]: (state) => {
             state.isLoading = false;
-            state.subreddit = null;
+            state.posts = null;
             state.postIndex = null;
             state.atIndexMax = true;
         },
     }
 });
 
-export const selectSubreddit = state => state.subreddit.subreddit; 
+export const selectPosts = state => state.subreddit.posts; 
 export const selectPostIndex = state => state.subreddit.postIndex;
 export const selectAtIndexMax = state => state.subreddit.atIndexMax;
 export const selectIsCommentsShowing = state => state.subreddit.isCommmentsShowing;
 export const selectIsLoading = state => state.subreddit.isLoading;
 export const selectCurrentPost = state => {
-    if(!state.subreddit.subreddit){
+    if(!state.subreddit.posts){
         return null;
     }
-    return state.subreddit.subreddit[state.subreddit.postIndex].data;
+    return state.subreddit.posts[state.subreddit.postIndex].data;
 }
 
 export const { updatePostIndex } = subredditSlice.actions;

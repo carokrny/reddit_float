@@ -10,7 +10,7 @@ function NextButton() {
         <button 
             disabled={atMax}
             onClick={() => {dispatch(updatePostIndex(1))}}>
-            Next
+            &#8680;
         </button>
     )
 }

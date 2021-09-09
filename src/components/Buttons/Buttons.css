@@ -2,7 +2,12 @@ button {
     font-size: 20px;
     font-weight: bold;
     padding: 12px;
-    border-radius: 3px;
-    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
+    background-color: rgb(245, 245, 245);
     box-shadow: 20px 10px 10px rgb(185, 185, 185);
+    border: 0
+}
+
+button:hover {
+    background-color: rgb(190, 190, 190);
 }

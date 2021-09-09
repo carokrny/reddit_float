@@ -4,21 +4,30 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 50px);
+    min-height: calc(100vh - 3rem);
+    background-color: rgb(220, 220, 220);
 }
 
 .postContainer {
-    width: 50%;
-    height: 50%;
-    background-color: rgb(240, 240, 240);
+    width: 55%;
+    max-height: calc(100vh - 11rem);
+    background-color: white;
     box-shadow: 20px 10px 10px rgb(185, 185, 185);
-    padding: 16px;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    grid-template-rows: 100%;
+    border-radius: 5px;
 }
 
 .buttonsContainer {
     width: 50%;
-    height: 100px;
+    height: 5rem;
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.buttonsContainer button {
+    box-shadow: 20px 10px 10px rgb(185, 185, 185);
 }

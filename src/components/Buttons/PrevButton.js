@@ -10,7 +10,7 @@ function PrevButton() {
         <button 
             disabled={index <= 0}
             onClick={() => {dispatch(updatePostIndex(-1))}}>
-            Previous
+            &#8678;
         </button>
     )
 }
