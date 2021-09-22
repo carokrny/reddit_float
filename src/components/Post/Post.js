@@ -39,6 +39,11 @@ function Post() {
                     <h2>{post.title}</h2>
                 </a>
                 <p className="author">- {post.author}</p>
+                {post.post_hint==="image" && (
+                    <img 
+                        src={post.url}
+                        alt="" />
+                )}
                 {post.is_video && (
                     <video 
                         controls 
@@ -51,8 +56,6 @@ function Post() {
                 )}
                 {post.domain === "youtube.com" && (
                     <iframe 
-                        /*width="560" 
-                        height="315"*/
                         src={`//www.youtube.com/embed/${getYouTubeId(post.url)}`} 
                         title="YouTube video player" 
                         frameBorder="0" 
@@ -60,11 +63,6 @@ function Post() {
                         allowFullScreen>
                         YouTube Video not available.
                     </iframe>
-                )}
-                {post.post_hint==="image" && (
-                    <img 
-                        src={post.url}
-                        alt="" />
                 )}
                 {post.domain === "gfycat.com" && (
                     <iframe 

@@ -1,3 +1,10 @@
+.vote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .vote h4, h5 {
     text-emphasis: none;
     font-weight: 400;
@@ -7,7 +14,7 @@
 
 .vote h5 {
     font-size: 1.5rem;
-    padding: 0 0.5rem;
+    padding: 0.25rem;
 }
 
 .vote h5 {

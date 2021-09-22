@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { updatePostIndex, selectPostIndex } from '../../slices/subredditSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectPostIndex, updatePostIndex } from '../../slices/subredditSlice';
 import './Buttons.css';
 
 function PrevButton() {
@@ -9,7 +9,7 @@ function PrevButton() {
     return (
         <button 
             disabled={index <= 0}
-            onClick={() => {dispatch(updatePostIndex(-1))}}>
+            onClick={() => dispatch(updatePostIndex(-1))} >
             &#8678;
         </button>
     )

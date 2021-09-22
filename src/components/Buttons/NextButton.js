@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { updatePostIndex, selectAtIndexMax } from '../../slices/subredditSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectAtIndexMax, updatePostIndex } from '../../slices/subredditSlice';
 import './Buttons.css';
 
 function NextButton() {
@@ -9,7 +9,7 @@ function NextButton() {
     return (
         <button 
             disabled={atMax}
-            onClick={() => {dispatch(updatePostIndex(1))}}>
+            onClick={() => dispatch(updatePostIndex(1))} >
             &#8680;
         </button>
     )

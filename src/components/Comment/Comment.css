@@ -1,0 +1,25 @@
+.comment {
+    width: calc(100% - 2*0.75rem);
+    margin: 0.75rem;
+    padding: 0.5rem;
+    background-color: rgb(230, 230, 230);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.comment.Vote {
+    padding-left: 1rem;
+}
+
+.comment-text {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-left: 1rem;
+}
+
+.comment-text p {
+    padding: 0.25rem 0;
+}

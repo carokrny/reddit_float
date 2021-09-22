@@ -1,0 +1,13 @@
+.commentsPanel {
+    width: 0; 
+    height: 0;
+    z-index: 10;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: white;
+}
+
+.commentsPanel.open {
+    width: 80%;
+    height: 100%;
+}
