@@ -5,6 +5,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     background-color: white;
+    padding: 1rem;
 }
 
 .commentsPanel.open {

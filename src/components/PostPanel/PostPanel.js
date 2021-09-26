@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updatePostIndex, selectPermalink } from '../../slices/subredditSlice';
-import { fetchComments } from '../../slices/commentSlice';
+import { selectPermalink, selectIsSubredditLoading } from '../../store/subredditSlice';
+import { fetchPostComments } from '../../store/commentSlice';
 import PrevButton from '../Buttons/PrevButton';
 import NextButton from '../Buttons/NextButton';
 import ViewCommentsButton from '../Buttons/ViewCommentsButton';
@@ -11,25 +11,23 @@ import './PostPanel.css';
 function PostPanel() {
     const dispatch = useDispatch();
     const permalink = useSelector(selectPermalink);
-    
-    useEffect(() => {
-        dispatch(fetchComments(permalink));
-    }, [dispatch, permalink])
+    const isSubredditLoading = useSelector(selectIsSubredditLoading);
 
-    const handleKeyDown = (e) => {
-        if (e.keyCode === 39) {
-            dispatch(updatePostIndex(1));
-        } 
-        if (e.keyCode === 37) {
-            dispatch(updatePostIndex(-1));
-        } 
+    // fetch comments whenever post updates
+    useEffect(() => {
+        if (permalink) {
+            dispatch(fetchPostComments(permalink));
+        }
+    }, [dispatch, permalink]);
+
+    const loadingPanel = () => {
+        return (
+            <h2>loading...</h2>
+        )
     }
-    
-    return (
-        <div 
-            className="postPanel"
-            tabIndex="0"
-            onKeyDown={(e) => handleKeyDown(e)}>
+
+    const notLoadingPanel = () => {
+        return (<>
             <div className="postContainer">
                 <Post />
             </div>
@@ -38,6 +36,13 @@ function PostPanel() {
                 <NextButton />
                 <ViewCommentsButton />
             </div>
+        </>)
+    }
+    
+    return (
+        <div 
+            className="postPanel" >
+            {isSubredditLoading ? loadingPanel() : notLoadingPanel()}
         </div>
     );
 }

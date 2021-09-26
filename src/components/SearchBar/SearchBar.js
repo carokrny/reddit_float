@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchSubreddit } from '../../slices/subredditSlice';
+import { fetchSearch } from '../../util/fetchSubredditThunks';
 import './SearchBar.css';
 
 
@@ -9,7 +9,7 @@ function SearchBar() {
     const dispatch = useDispatch();
 
     const search = () => {
-        dispatch(fetchSubreddit(searchTerm)); 
+        dispatch(fetchSearch(searchTerm))
     };
 
     const handleKeyDown = e => {

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectComments, selectIsCommentsShowing } from '../../slices/commentSlice';
+import { selectComments, selectIsCommentsShowing } from '../../store/commentSlice';
 import Comment from '../Comment/Comment';
 import './CommentsPanel.css';
 

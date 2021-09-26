@@ -1,17 +1,20 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchComments } from '../api/reddit';
 
 /* 
 Comment slice keeps fetches and stores the comments of a particular post. 
 Comment slice of state includes: 
-    comments:              an array of comment objects assocaited with a particular post
-    isCommentsLoading:     a boolean that signals whether the fetch is still loading
-    isCommentsShowing:     a boolean that signals whether the comments are showing
+    comments:               an array of comment objects assocaited with a particular post
+    isCommentsLoading:      a boolean that signals whether the fetch is still loading
+    isCommentsShowing:      a boolean that signals whether the comments are showing
 Subreddit slice has actions: 
-    fetchComments:         an async thunk that fetches the comments associated with a post's permalink
-    toggleComments:        toggles whether comments are showing (i.e., isCommentsShowing)
+    toggleComments:         toggles whether comments are showing (i.e., isCommentsShowing)
+    startFetchComments:     updates state to be ready to fetch comments
+    fulfilledFetchComments: updates state according to payload from fetching comments
+    failedFetchComments:    updates state to initial state if fetch encounters an error
 */
 
-export const fetchComments = createAsyncThunk(
+/*export const fetchComments = createAsyncThunk(
     'post/fetchComments', 
     async (permalink) => {
         if (!permalink) {
@@ -21,7 +24,6 @@ export const fetchComments = createAsyncThunk(
         try {
             const response = await fetch(url);
             const json = await response.json();
-            console.log(json[1].data.children);
             const comments = json[1].data.children.map(comment => {
                 return {
                     author: comment.data.author,
@@ -29,13 +31,13 @@ export const fetchComments = createAsyncThunk(
                     ups: comment.data.ups,
                 }
             });
-            console.log(comments);
+            //console.log(comments);
             return comments
         } catch(e) {
             console.error(e);
         }
     }
-);
+);*/
 
 const commentSlice = createSlice({
     name: 'comment', 
@@ -47,9 +49,21 @@ const commentSlice = createSlice({
     reducers: {
         toggleComments: (state) => {
             state.isCommentsShowing = !state.isCommentsShowing;
+        }, 
+        startFetchComments: (state) => {
+            state.isCommentsLoading = true;
+            state.isCommentsShowing = false;
+        }, 
+        fulfilledFetchComments: (state, action) => {
+            state.isCommentsLoading = false;
+            state.comments = action.payload;
+        }, 
+        failedFetchComments: (state) => {
+            state.isCommentsLoading = false;
+            state.comments = null;
         }
     },
-    extraReducers: {
+    /*extraReducers: {
          [fetchComments.pending]: (state) => {
             state.isLoading = true;
         },
@@ -63,13 +77,29 @@ const commentSlice = createSlice({
             state.posts = null;
             state.isCommentsShowing = false;
         },
-    }
+    }*/
 });
 
 export const selectIsCommentsLoading = state => state.comment.isCommentsLoading;
 export const selectIsCommentsShowing = state => state.comment.isCommentsShowing;
 export const selectComments = state => state.comment.comments;
 
-export const { toggleComments } = commentSlice.actions;
+export const { 
+    toggleComments, 
+    startFetchComments, 
+    fulfilledFetchComments, 
+    failedFetchComments 
+} = commentSlice.actions;
 
 export default commentSlice.reducer;
+
+// Redux thunk to get comments for a particular post 
+export const fetchPostComments = (permalink) => async (dispatch) => {
+    try {
+        dispatch(startFetchComments());
+        const comments = await fetchComments(permalink);
+        dispatch(fulfilledFetchComments(comments));
+    } catch (e) {
+        dispatch(failedFetchComments());
+    }
+}

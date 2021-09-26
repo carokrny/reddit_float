@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectCurrentPost } from '../../slices/subredditSlice';
+import { selectCurrentPost } from '../../store/subredditSlice';
 import Vote from '../Vote/Vote';
 import './Post.css';
 
@@ -49,6 +49,7 @@ function Post() {
                         controls 
                         autoPlay
                         preload="auto"
+                        id="redditVideo"
                         src={post.media.reddit_video.fallback_url} 
                         type="video/mp4">
                         Video not supported by browser.
@@ -81,7 +82,7 @@ function Post() {
     return (
         <>
             <div className="voteContainer">
-                <Vote ups={post===null ? "" : post.ups} />
+                <Vote ups={!post ? "" : post.ups} />
             </div>
             <div className="post">
                 {renderPost()}
