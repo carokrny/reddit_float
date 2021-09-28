@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { selectCurrentPost } from '../../store/subredditSlice';
 import { htmlDecode } from '../../util/htmlDecode';
 import Vote from '../Vote/Vote';
+import VideoPost from './VideoPost';
 import './Post.css';
 
 function Post() {
@@ -46,8 +47,8 @@ function Post() {
                         src={post.url}
                         alt="" />
                 )}
-                {post.is_video && (
-                    <video 
+                {post.is_video && <VideoPost fallback_url={post.media.reddit_video.fallback_url} />}
+                    {/*<video 
                         controls 
                         autoPlay
                         preload="auto"
@@ -55,8 +56,7 @@ function Post() {
                         src={post.media.reddit_video.fallback_url} 
                         type="video/mp4">
                         Video not supported by browser.
-                    </video>
-                )}
+                    </video>*/}
                 {post.domain === "youtube.com" && (
                     <iframe 
                         src={`//www.youtube.com/embed/${getYouTubeId(post.url)}`} 
