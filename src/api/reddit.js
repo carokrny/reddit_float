@@ -1,10 +1,9 @@
-export const FETCH_INTERVAL = 3;
+export const FETCH_INTERVAL = 20;
 export const API_ROOT = 'https://www.reddit.com';
 
 export const fetchSubreddit = async (fetchData) => {
     const { subredditName, additionalQuery } = fetchData;
     const url = `${API_ROOT}${subredditName}.json?limit=${FETCH_INTERVAL}${additionalQuery}`;
-    console.log(url);
     try {
         const response = await fetch(url);
         const json = await response.json();
@@ -30,6 +29,7 @@ export const fetchComments = async (permalink) => {
         const response = await fetch(url);
         const json = await response.json();
         const comments = json[1].data.children.map(comment => comment.data);
+        console.log(comments);
         return comments;
     } catch(e) {
         console.error(e);

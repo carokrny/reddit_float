@@ -23,6 +23,7 @@ function SearchBar() {
             <input 
                 type="text"
                 placeholder="/r/" 
+                spellCheck="false"
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
                 onKeyDown={handleKeyDown} 

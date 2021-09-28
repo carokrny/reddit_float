@@ -14,31 +14,6 @@ Subreddit slice has actions:
     failedFetchComments:    updates state to initial state if fetch encounters an error
 */
 
-/*export const fetchComments = createAsyncThunk(
-    'post/fetchComments', 
-    async (permalink) => {
-        if (!permalink) {
-            return null;
-        }
-        const url = `https://www.reddit.com${permalink}.json`;
-        try {
-            const response = await fetch(url);
-            const json = await response.json();
-            const comments = json[1].data.children.map(comment => {
-                return {
-                    author: comment.data.author,
-                    body: comment.data.body,
-                    ups: comment.data.ups,
-                }
-            });
-            //console.log(comments);
-            return comments
-        } catch(e) {
-            console.error(e);
-        }
-    }
-);*/
-
 const commentSlice = createSlice({
     name: 'comment', 
     initialState: {
@@ -63,21 +38,6 @@ const commentSlice = createSlice({
             state.comments = null;
         }
     },
-    /*extraReducers: {
-         [fetchComments.pending]: (state) => {
-            state.isLoading = true;
-        },
-        [fetchComments.fulfilled]: (state, action) => {
-            state.isLoading = false;
-            state.comments = action.payload;
-            state.isCommentsShowing = false;
-        },
-        [fetchComments.rejected]: (state) => {
-            state.isLoading = false;
-            state.posts = null;
-            state.isCommentsShowing = false;
-        },
-    }*/
 });
 
 export const selectIsCommentsLoading = state => state.comment.isCommentsLoading;

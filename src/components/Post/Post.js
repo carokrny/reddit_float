@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectCurrentPost } from '../../store/subredditSlice';
+import { htmlDecode } from '../../util/htmlDecode';
 import Vote from '../Vote/Vote';
 import './Post.css';
 
@@ -23,9 +24,10 @@ function Post() {
             return (
                 <>
                     <h2>Welcome to Reddit Float, a pared down Reddit client for mild visual impairments.</h2>
-                    <p>Use the search bar to search for a subreddit.</p> 
+                    <p>Use the search bar to search for a subreddit and view posts.</p> 
                     <p>One post is displayed at a time to reduce eye strain. Use the mouse or arrow keys to toggle between posts. </p>
-                    <p>Click on a post's title to view on Reddit</p>
+                    <p>Use the comments button toggle viewing the comments.</p>
+                    <p>Reddit Float is read-only. Click on a post's title to view on Reddit!</p>
                 </>
             );
         }
@@ -36,7 +38,7 @@ function Post() {
                     target="_blank"  
                     rel="noreferrer" 
                     className="link" >
-                    <h2>{post.title}</h2>
+                    <h2>{(post.title)}</h2>
                 </a>
                 <p className="author">- {post.author}</p>
                 {post.post_hint==="image" && (
@@ -74,7 +76,7 @@ function Post() {
                         allowFullScreen>
                         gfycat not available.
                     </iframe>)}
-                {post.selftext && <p>{post.selftext}</p>}
+                {post.selftext_html && htmlDecode(post.selftext_html)}
             </>
         )
     }
