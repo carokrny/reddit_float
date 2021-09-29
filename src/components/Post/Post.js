@@ -39,7 +39,7 @@ function Post() {
                     target="_blank"  
                     rel="noreferrer" 
                     className="link" >
-                    <h2>{(post.title)}</h2>
+                    <h2>{htmlDecode(post.title)}</h2>
                 </a>
                 <p className="author">- {post.author}</p>
                 {post.post_hint==="image" && (
@@ -48,15 +48,6 @@ function Post() {
                         alt="" />
                 )}
                 {post.is_video && <VideoPost fallback_url={post.media.reddit_video.fallback_url} />}
-                    {/*<video 
-                        controls 
-                        autoPlay
-                        preload="auto"
-                        id="redditVideo"
-                        src={post.media.reddit_video.fallback_url} 
-                        type="video/mp4">
-                        Video not supported by browser.
-                    </video>*/}
                 {post.domain === "youtube.com" && (
                     <iframe 
                         src={`//www.youtube.com/embed/${getYouTubeId(post.url)}`} 
@@ -76,6 +67,9 @@ function Post() {
                         allowFullScreen>
                         gfycat not available.
                     </iframe>)}
+                {post.domain === "twitter.com" && (
+                    htmlDecode(post.media.oembed.html)
+                )}
                 {post.selftext_html && htmlDecode(post.selftext_html)}
             </>
         )

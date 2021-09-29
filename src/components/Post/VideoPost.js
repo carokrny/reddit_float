@@ -1,21 +1,32 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 function VideoPost(props) {
-    const audio_url =props.fallback_url.split("DASH_")[0] + "DASH_audio.mp4";
+    const [audioError, setAudioError] = useState(false)
+    const audio_url = props.fallback_url.split("DASH_")[0] + "DASH_audio.mp4";
 
-    const handleAudio = (e) => {
+    const handleAudio = useCallback((e) => {
         const video = document.getElementById('redditVideo');
         const audio = document.getElementById('redditAudio');
-        if (e.type === 'play') {
-            audio.play();
-        } else if (e.type === 'pause') {
-            audio.pause();
-        } else if (e.type === 'seeked') {
-            audio.currentTime = video.currentTime;
-        } else if (e.type === 'volumechange') {
-            audio.volume = video.volume;
+        if (!audio || audioError) {
+            return;
         }
-    }
+        switch(e.type) {
+            case 'play': 
+                audio.play();
+                break;
+            case 'pause': 
+                audio.pause();
+                break;
+            case 'seeked': 
+                audio.currentTime = video.currentTime;
+                break;
+            case 'volumechange': 
+                audio.volume = video.volume;
+                break;
+            default:
+                break;
+        }
+    }, [audioError]);
 
     useEffect(() => {
         const video = document.getElementById('redditVideo');
@@ -25,15 +36,16 @@ function VideoPost(props) {
         video.addEventListener('volumechange', handleAudio);
 
         return () => {
+            //const video = document.getElementById('redditVideo');
             video.removeEventListener('play', handleAudio);
             video.removeEventListener('pause', handleAudio);
             video.removeEventListener('seeking', handleAudio);
             video.removeEventListener('volumechange', handleAudio);
         };
-    }, []);
+    }, [handleAudio, audioError]);
 
     return (
-        <> 
+        <>
             <video 
                 controls 
                 autoPlay
@@ -43,13 +55,18 @@ function VideoPost(props) {
                 type="video/mp4">
                 Video not supported by browser.
             </video>
-            <audio
-                src={audio_url}
-                id="redditAudio"
-                display='none'>
-            </audio>
+            { !audioError && (
+                <audio
+                    src={audio_url}
+                    onError={(e) => {
+                        setAudioError(true);
+                    }}
+                    id="redditAudio"
+                    display='none'>
+                </audio>
+            )}
         </>
     )
 }
-
+     
 export default VideoPost;

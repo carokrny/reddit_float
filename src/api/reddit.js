@@ -29,7 +29,6 @@ export const fetchComments = async (permalink) => {
         const response = await fetch(url);
         const json = await response.json();
         const comments = json[1].data.children.map(comment => comment.data);
-        console.log(comments);
         return comments;
     } catch(e) {
         console.error(e);
