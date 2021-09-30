@@ -1,23 +1,24 @@
 .vote {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0.125rem;
 }
 
 .vote h4, h5 {
+    display: inline-block;
     text-emphasis: none;
     font-weight: 400;
     font-family: sans-serif;
     font-stretch: normal;
+    text-align: center;
 }
 
 .vote h5 {
-    font-size: 1.5rem;
-    padding: 0.25rem;
+    font-size: 0.9rem;
+    padding: 0.125rem;
 }
 
-.vote h5 {
-    line-height: 2rem;
-    font-size: 1rem;
+.vote h4 {
+    color: grey;
 }

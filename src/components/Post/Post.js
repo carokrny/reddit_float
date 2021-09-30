@@ -62,7 +62,7 @@ function Post() {
     return (
         <>
             <div className="voteContainer">
-                <Vote ups={!post ? "" : post.ups} />
+                {!post ? "" : <Vote ups={post.ups} />}
             </div>
             <div className="post">
                 {renderPost()}

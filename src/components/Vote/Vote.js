@@ -13,7 +13,7 @@ function Vote(props) {
         <div className="vote">
             <h4>&#8679;</h4>
             <h5>{formatUps()}</h5>
-            <h4>&#8681;</h4>
+            {/*<h4>&#8681;</h4>*/}
         </div>
     );
 }
