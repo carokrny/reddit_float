@@ -8,7 +8,8 @@
 }
 
 .post {
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -34,6 +35,14 @@
 
 .post p {
     margin-top: 1rem;
+}
+
+.post a {
+    color: rgb(59, 82, 116);
+}
+
+.post a h2 {
+    color: black;
 }
 
 .author {

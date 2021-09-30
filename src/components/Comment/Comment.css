@@ -36,9 +36,13 @@
     padding: 0.5rem 0;
 }
 
-.comment-body p, li {
+.comment-body {
     padding: 0.5rem 0.5rem 0.5rem 0;
+}
+
+.comment-body p, li {
     padding-bottom: 0.25;
+    display: inline-block;
 }
 
 .comment button {
@@ -54,10 +58,6 @@
 
 .comment button:hover {
     color: rgb(100, 100, 100);
-}
-
-.comment li {
-    display: inline-block;
 }
 
 .replies {

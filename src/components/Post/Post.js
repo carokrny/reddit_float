@@ -3,22 +3,11 @@ import { selectCurrentPost } from '../../store/subredditSlice';
 import { htmlDecode } from '../../util/htmlDecode';
 import Vote from '../Vote/Vote';
 import VideoPost from './VideoPost';
+import TwitterPost from './TwitterPost';
 import './Post.css';
 
 function Post() {
     const post = useSelector(selectCurrentPost);
-
-    const getYouTubeId = (url) => {
-        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-        const match = url.match(regExp);
-
-        return (match && match[2].length === 11) ? match[2] : null;
-    }
-
-    const getGfycatId = (url) => {
-        const id = url.replace('https://gfycat.com/', '');
-        return id;
-    }
 
     const renderPost = () => {
         if (!post) {
@@ -47,30 +36,25 @@ function Post() {
                         src={post.url}
                         alt="" />
                 )}
-                {post.is_video && <VideoPost fallback_url={post.media.reddit_video.fallback_url} />}
-                {post.domain === "youtube.com" && (
-                    <iframe 
-                        src={`//www.youtube.com/embed/${getYouTubeId(post.url)}`} 
-                        title="YouTube video player" 
-                        frameBorder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowFullScreen>
-                        YouTube Video not available.
-                    </iframe>
+                {post.post_hint==="link" && post.domain !== "twitter.com" && (
+                    <a href={post.url}>
+                        {`${post.url.substring(8,38)}...`} 
+                    </a>
                 )}
-                {post.domain === "gfycat.com" && (
-                    <iframe 
-                        src={`//gfycat.com/ifr/${getGfycatId(post.url)}`} 
-                        title="gfycat player" 
-                        frameBorder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowFullScreen>
-                        gfycat not available.
-                    </iframe>)}
-                {post.domain === "twitter.com" && (
-                    htmlDecode(post.media.oembed.html)
+                {post.is_video && 
+                    post.media.reddit_video && (
+                    <VideoPost fallback_url={post.media.reddit_video.fallback_url}/>
                 )}
-                {post.selftext_html && htmlDecode(post.selftext_html)}
+                {(post.domain === "gfycat.com" || post.domain === "youtube.com") && 
+                    post.media.oembed && 
+                    htmlDecode(post.media.oembed.html
+                )}
+                {post.domain === "twitter.com" && 
+                    post.media.oembed && 
+                    <TwitterPost twitterHtml={post.media.oembed.html} />}
+                {post.selftext_html && 
+                    htmlDecode(post.selftext_html)
+                }
             </>
         )
     }

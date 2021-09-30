@@ -59,6 +59,7 @@ function VideoPost(props) {
                 <audio
                     src={audio_url}
                     onError={(e) => {
+                        e.target.onError = null;
                         setAudioError(true);
                     }}
                     id="redditAudio"

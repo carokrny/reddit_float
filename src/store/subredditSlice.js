@@ -104,7 +104,7 @@ export const selectCurrentPost = state => {
     return state.subreddit.posts[state.subreddit.postIndex];
 }
 export const selectPermalink = state => {
-    if(!state.subreddit.posts || state.subreddit.postIndex === null){
+    if(!state.subreddit.posts || !state.subreddit.posts[state.subreddit.postIndex]){
         return null;
     }
     return state.subreddit.posts[state.subreddit.postIndex].permalink;
