@@ -37,11 +37,11 @@
 }
 
 .comment-body {
-    padding: 0.5rem 0.5rem 0.5rem 0;
+    padding: 0 0.5rem 0 0;
 }
 
 .comment-body p, li {
-    padding-bottom: 0.25;
+    padding-bottom: 0.5rem;
     display: inline-block;
 }
 
