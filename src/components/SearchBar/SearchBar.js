@@ -20,6 +20,10 @@ function SearchBar() {
     
     return (
         <div className="searchBar">
+            <img 
+                src="./reddit-float-logo.png"
+                alt="reddit float logo" 
+            />
             <input 
                 type="text"
                 placeholder="/r/" 
