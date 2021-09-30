@@ -29,6 +29,7 @@ export const fetchComments = async (permalink) => {
         const response = await fetch(url);
         const json = await response.json();
         const comments = json[1].data.children.map(comment => comment.data);
+        comments.pop(); // last element in comments array is extraneous data returned by reddit
         return comments;
     } catch(e) {
         console.error(e);
