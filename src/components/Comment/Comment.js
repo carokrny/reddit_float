@@ -41,11 +41,11 @@ function Comment(props) {
                 </div>
                 <div className='comment-content'>
                     <h4>{props.comment.author}</h4>
-                    <div className="comment-body">{htmlDecode(props.comment.body_html)}</div>
+                    <div className='comment-body'>{htmlDecode(props.comment.body_html)}</div>
                     {getRepliesButton()}
                 </div>
             </div>
-            {repliesShowing && <div className="replies">
+            {repliesShowing && <div className='replies'>
                 {   
                     replies.map((reply, index) => {
                         return <Comment comment={reply.data} key={index} />;

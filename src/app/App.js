@@ -14,7 +14,7 @@ function App () {
         <SearchBar />
         <PostPanel />
       </article>
-        {isShowingComments ? <CommentsPanel /> : ""}
+      {isShowingComments ? <CommentsPanel /> : ""}
     </div>
   );
 }
