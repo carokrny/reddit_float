@@ -7,13 +7,15 @@ import './App.css';
 
 function App () {
   const isShowingComments = useSelector(selectIsCommentsShowing);
-  
+
+  const mainClass = isShowingComments ? "commentsOpen" : "commentsNotOpen";
+
   return (
     <div className="App">
-      <article>
+      <main className={mainClass}>
         <SearchBar />
         <PostPanel />
-      </article>
+      </main>
       {isShowingComments ? <CommentsPanel /> : ""}
     </div>
   );

@@ -3,17 +3,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 3rem);
+    height: calc(100% - 3rem);
     width: 100%;
     background-color: rgb(220, 220, 220);
 }
 
 .postContainer {
     width: 55%;
-    max-height: calc(100vh - 11rem);
+    min-width: 350px;
+    max-height: calc(100% - (2rem + 5rem));
+    min-height: 100px;
     background-color: white;
     box-shadow: 20px 10px 10px rgb(185, 185, 185);
-    margin-top: 1rem;
+    margin: 2rem 2rem 0 2rem;
     display: grid;
     grid-template-columns: 4rem 1fr;
     grid-template-rows: 100%;
@@ -21,11 +23,33 @@
 }
 
 .buttonsContainer {
-    width: 50%;
+    width: 55%;
+    min-width: 350px;
     height: 5rem;
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .postContainer, .buttonsContainer {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 450px), (orientation: portrait) and (max-height: 800px) {
+    .postContainer, .buttonsContainer {
+        width: 100%;
+    }
+
+    .postContainer {
+        max-height: calc(100% - (2rem + 4rem));
+    }
+
+    .buttonsContainer {
+        height: 4rem;
+    }
 }
 
 .buttonsContainer button {

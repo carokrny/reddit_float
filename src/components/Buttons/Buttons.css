@@ -1,11 +1,23 @@
 button {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: bold;
-    padding: 12px;
+    padding: 0.75rem;
     border-radius: 10px;
     background-color: rgb(245, 245, 245);
     box-shadow: 20px 10px 10px rgb(185, 185, 185);
-    border: 0
+    border: 0;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-height: 510px), (orientation: portrait) and (max-height: 800px) {
+    button {
+        height: 2rem;
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
 }
 
 button:hover {

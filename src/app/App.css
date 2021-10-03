@@ -2,9 +2,38 @@
     height: 100vh;
     width: 100vw;
     display: flex; 
+    overflow-x: hidden;
   }
 
-  article {
+main {
     width: 100%;
   }
+
+@media (orientation: landscape) {
+  .App {
+    flex-direction: row;
+  }
+
+  .commentsOpen {
+    height: 100vh;
+  }
+
+  .commentsNotOpen {
+    height: 100vh;
+  }
+
+}
   
+@media (orientation: portrait) {
+  .App {
+    flex-direction: column;
+  }
+
+  .commentsOpen {
+    height: 50vh;
+  }
+
+  .commentsNotOpen {
+    height: 100vh;
+  }
+}

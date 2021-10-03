@@ -23,6 +23,7 @@ input {
 .searchBar button {
     grid-column: 3;
     border-radius: 0;
+    min-height: 3rem;
 }
 
 button:hover {

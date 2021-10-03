@@ -46,9 +46,10 @@ function Post() {
                     <VideoPost fallback_url={post.media.reddit_video.fallback_url}/>
                 )}
                 {(post.domain === "gfycat.com" || post.domain === "youtube.com") && 
+                    post.media &&
                     post.media.oembed && 
-                    htmlDecode(post.media.oembed.html
-                )}
+                    htmlDecode(post.media.oembed.html)
+                }
                 {post.domain === "twitter.com" && 
                     post.media.oembed && 
                     <TwitterPost twitterHtml={post.media.oembed.html} />}

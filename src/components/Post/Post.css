@@ -1,10 +1,10 @@
 .voteContainer {
-    padding: 1rem;
     background-color: rgb(245, 245, 245);
     text-align: center;
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    padding: 1rem;
 }
 
 .post {
@@ -14,11 +14,28 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 2rem;
+    padding: 1.5rem;
 }
 
 .post h2 {
     font-size: 1.5rem;
+}
+
+.post p {
+    margin-top: 1rem;
+}
+
+
+@media only screen and (max-height: 510px) {
+    .post h2 {
+        font-size: 1.2rem;
+    }    
+}
+
+@media only screen and (max-width: 450px) {
+    .post h2 {
+        font-size: 1.2rem;
+    }    
 }
 
 .post iframe {
@@ -31,10 +48,6 @@
 .post video, img {
     max-width: 90%;
     align-self: center;
-}
-
-.post p {
-    margin-top: 1rem;
 }
 
 .post a {
@@ -59,4 +72,8 @@
 
 .link:hover {
     text-decoration: underline;
+}
+
+.md {
+    max-width: 100%;
 }
