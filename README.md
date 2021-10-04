@@ -2,7 +2,7 @@
 
 React frontend Reddit client application built for people with mild visual impairments.
 
-View live app [here]()!
+View live app [here](https://reddit-float.netlify.app)!
 
 ## Table of Contents 
 * [Introduction](#introduction)
@@ -36,7 +36,7 @@ Minimalist UI, pared down UX, and soft grey tone all combine to create a reddit 
 
 ## Set Up
 
-Live site hosted by Netlify at []().
+Live site hosted by Netlify at [reddit-float.netlify.app](https://reddit-float.netlify.app).
 
 Or, install locally and run `npm run build` in the project root and the app will be available on port 3000.
 
