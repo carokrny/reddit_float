@@ -19,24 +19,26 @@ function SearchBar() {
     };  
     
     return (
-        <div className="searchBar">
-            <img 
-                src="./reddit-float-logo.png"
-                alt="reddit float logo" 
-            />
-            <input 
-                type="text"
-                placeholder="/r/" 
-                spellCheck="false"
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
-                onKeyDown={handleKeyDown} 
-            />
-            <button 
-                className="SearchButton" 
-                onClick={search} >
-                GO
-            </button>
+        <div className="gridWrapper">
+            <div className="searchBar">
+                <img 
+                    src="./reddit-float-logo.png"
+                    alt="reddit float logo" 
+                />
+                <input 
+                    type="text"
+                    placeholder="/r/" 
+                    spellCheck="false"
+                    value={searchTerm}
+                    onChange={e => setSearchTerm(e.target.value)}
+                    onKeyDown={handleKeyDown} 
+                />
+                <button 
+                    className="SearchButton" 
+                    onClick={search} >
+                    GO
+                </button>
+            </div>
         </div>
     );
 }
