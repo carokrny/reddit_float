@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Reddit Float
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React frontend Reddit client application built for people with mild visual impairments.
 
-## Available Scripts
+View live app [here]()!
 
-In the project directory, you can run:
+## Table of Contents 
+* [Introduction](#introduction)
+* [Technologies](#technologies)
+* [Set Up](#set-up)
+* [Sources](#sources)
 
-### `yarn start`
+## Introduction 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Ever notice that it’s easier to read of social media than a dense news article? Or that it’s easier to look at your phone than your laptop? That’s no coincidence. Our eyes more easily focus on text when it’s presented in small snippets. For visually impaired people, like me (hi!), that difference in difficulty can be more drastic and can cause eye strain and headaches.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+But we visually impaired people enjoy mindlessly wasting time on the internet too, so I created a pared down version of Reddit to enable more time wasting with less eye strain. 
 
-### `yarn test`
+Minimalist UI, pared down UX, and soft grey tone all combine to create a reddit client that is relaxing to view and peruse. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies 
 
-### `yarn build`
+[Reddit API](https://www.reddit.com/dev/api/) was used as a resource. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* `react` v. 17.0.2
+* `react-dom` v. 17.0.2
+* `react-redux` v. 7.2.5
+* `redux` v. 4.1.1
+* `jest` v. 26.6.0
+* `enzyme` v. 3.11.0
+* `@wojtekmaj/enzyme-adapter-react-17` v.0.6.3
+* `redux-mock-store` v. 1.5.4
+* `testcafe` v. 1.16.0
+* `testcafe-react-selectors` v. 4.1.5
+* `npm` v. 7.21.1
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Set Up
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Live site hosted by Netlify at []().
 
-### `yarn eject`
+Or, install locally and run `npm run build` in the project root and the app will be available on port 3000.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Sources
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This app was created as part of [Codecademy's Fullstack Engineer](https://www.codecademy.com/learn) curriculum. Codecademy provided the project prompt of creating a Reddit client application. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The [Unofficial Reddit API](https://github.com/reddit-archive/reddit/wiki/JSON) was also helpful in the creation of this project. 
