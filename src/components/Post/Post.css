@@ -5,6 +5,7 @@
     align-items: flex-start;
     justify-content: center;
     padding: 1rem;
+    border-radius: inherit;
 }
 
 .post {

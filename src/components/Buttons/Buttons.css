@@ -24,3 +24,13 @@ button {
 button:hover {
     background-color: rgb(190, 190, 190);
 }
+
+button:disabled,
+button[disabled] {
+    color: rgb(200, 200, 200);
+}
+
+button:disabled:hover,
+button[disabled]:hover{
+    background-color: rgb(245, 245, 245);
+}
