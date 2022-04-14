@@ -4,6 +4,8 @@ React frontend Reddit client application built for people with mild visual impai
 
 View live app [here](https://reddit-float.netlify.app)!
 
+[![Screenshot of reddit float application](./public/screenshot.png)](https://reddit-float.netlify.app)
+
 ## Table of Contents 
 * [Introduction](#introduction)
 * [Technologies](#technologies)
@@ -12,7 +14,9 @@ View live app [here](https://reddit-float.netlify.app)!
 
 ## Introduction 
 
-Ever notice that it’s easier to read of social media than a dense news article? Or that it’s easier to look at your phone than your laptop? That’s no coincidence. Our eyes more easily focus on text when it’s presented in small snippets. For visually impaired people, like me (hi!), that difference in difficulty can be more drastic and can cause eye strain and headaches.
+Ever notice that it’s easier to read of social media than a dense news article? Or that it’s easier to look at your phone than your laptop? That’s no coincidence!
+
+Our eyes more easily focus on text when it’s presented in small snippets. For visually impaired people, like me (hi!), that difference in difficulty can be more drastic and can cause eye strain and headaches.
 
 But we visually impaired people enjoy mindlessly wasting time on the internet too, so I created a pared down version of Reddit to enable more time wasting with less eye strain. 
 
